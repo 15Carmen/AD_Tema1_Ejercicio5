@@ -1,12 +1,10 @@
 package parte2;
 
-import java.io.File;
-import java.io.FileReader;
 import java.io.IOException;
 import java.io.RandomAccessFile;
 
 public class HastaE {
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args){
 
         try{
             byte letra; //Declaramos una variable byte donde guardaremos la letra que leamos del ficheroLectura
@@ -16,15 +14,16 @@ public class HastaE {
             RandomAccessFile lectura = new RandomAccessFile("src/parte2/lectura.txt", "r");
             RandomAccessFile escritura = new RandomAccessFile("src/parte2/escritura.txt", "rw");
 
+
             for (int i = 0; i < lectura.length()-1; i++) {
-                lectura.seek(pos);
+                lectura.seek(pos++);
                 letra=lectura.readByte();
                 escritura.writeByte(letra);
-                lectura.seek(pos++);
+                escritura.seek(pos);
             }
 
         }catch (IOException e){
-            e.printStackTrace();
+            System.out.println(e.getMessage());
         }
 
 
